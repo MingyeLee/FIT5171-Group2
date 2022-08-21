@@ -11,6 +11,8 @@ public class FlightCollection {
 	}
 
 	public static void addFlights(ArrayList<Flight> flights) {
+		//	Appends all the elements in the specified collection to the end of this list,
+		//	in the order that they are returned by the specified collection's Iterator.
 		FlightCollection.flights.addAll(flights);
 	}
 	
