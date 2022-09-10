@@ -1,4 +1,9 @@
 package fit5171;
+
+import validation.PersonValidator;
+
+import java.io.InvalidObjectException;
+
 public abstract class Person //abstract class Person
 {
     private String firstName;
@@ -9,6 +14,10 @@ public abstract class Person //abstract class Person
     public Person(){}
 
     public Person(String firstName, String secondName, int age, String gender){
+        PersonValidator.validateAge(age);
+        PersonValidator.validateGender(gender);
+        PersonValidator.validateName(firstName);
+        PersonValidator.validateName(secondName);
         this.age=age;
         this.firstName=firstName;
         this.secondName=secondName;
@@ -20,6 +29,7 @@ public abstract class Person //abstract class Person
     }
 
     public void setAge(int age) {
+        PersonValidator.validateAge(age);
         this.age = age;
     }
 
@@ -28,6 +38,7 @@ public abstract class Person //abstract class Person
     }
 
     public void setGender(String gender) {
+        PersonValidator.validateGender(gender);
         this.gender = gender;
     }
 
@@ -40,10 +51,12 @@ public abstract class Person //abstract class Person
     }
 
     public void setFirstName(String firstName) {
+        PersonValidator.validateName(firstName);
         this.firstName = firstName;
     }
 
     public void setSecondName(String secondName) {
+        PersonValidator.validateName(secondName);
         this.secondName = secondName;
     }
 

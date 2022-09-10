@@ -1,5 +1,7 @@
 package fit5171;
 
+import validation.AirplaneValidator;
+
 public class Airplane
 {
     private int airplaneID;
@@ -10,6 +12,12 @@ public class Airplane
 
     public Airplane(int airplaneID, String airplaneModel, int businessSitsNumber, int economySitsNumber, int crewSitsNumber)
     {
+        AirplaneValidator.validateAirplaneID(airplaneID);
+        AirplaneValidator.validateAirplaneModel(airplaneModel);
+        AirplaneValidator.validateBusinessSitsNumber(businessSitsNumber);
+        AirplaneValidator.validateEconomySitsNumber(economySitsNumber);
+        AirplaneValidator.validateCrewSitsNumber(crewSitsNumber);
+        AirplaneValidator.validateTotalSitsNumber(businessSitsNumber,economySitsNumber,crewSitsNumber);
         this.airplaneID=airplaneID;
         this.airplaneModel = airplaneModel;
         this.businessSitsNumber = businessSitsNumber;
@@ -22,6 +30,7 @@ public class Airplane
     }
 
     public void setAirplaneID(int airplaneID) {
+        AirplaneValidator.validateAirplaneID(airplaneID);
         this.airplaneID = airplaneID;
     }
 
@@ -30,6 +39,7 @@ public class Airplane
     }
 
     public void setAirplaneModel(String airplaneModel) {
+        AirplaneValidator.validateAirplaneModel(airplaneModel);
         this.airplaneModel = airplaneModel;
     }
 
@@ -38,6 +48,8 @@ public class Airplane
     }
 
     public void setBusinessSitsNumber(int businessSitsNumber) {
+        AirplaneValidator.validateBusinessSitsNumber(businessSitsNumber);
+        AirplaneValidator.validateTotalSitsNumber(businessSitsNumber,this.economySitsNumber,this.crewSitsNumber);
         this.businessSitsNumber = businessSitsNumber;
     }
 
@@ -45,8 +57,10 @@ public class Airplane
         return economySitsNumber;
     }
 
-    public void setEconomySitsNumber(int economSitsNumber) {
-        this.economySitsNumber = economSitsNumber;
+    public void setEconomySitsNumber(int economySitsNumber) {
+        AirplaneValidator.validateEconomySitsNumber(economySitsNumber);
+        AirplaneValidator.validateTotalSitsNumber(this.businessSitsNumber,economySitsNumber,this.crewSitsNumber);
+        this.economySitsNumber = economySitsNumber;
     }
 
     public int getCrewSitsNumber() {
@@ -54,6 +68,8 @@ public class Airplane
     }
 
     public void setCrewSitsNumber(int crewSitsNumber) {
+        AirplaneValidator.validateCrewSitsNumber(crewSitsNumber);
+        AirplaneValidator.validateTotalSitsNumber(this.businessSitsNumber,this.economySitsNumber,crewSitsNumber);
         this.crewSitsNumber = crewSitsNumber;
     }
 

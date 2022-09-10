@@ -12,27 +12,27 @@ public class Flight {
     private Timestamp dateFrom;
     private Timestamp dateTo;
     Airplane airplane;
-    
-    public Flight(){}
 
-    public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,Timestamp dateTo, Airplane airplane)
-    {
-            this.flightID=flight_id;
-            this.departTo = departTo;
-            this.departFrom = departFrom;
-            this.code = code;
-            this.company = company;
-            this.airplane = airplane;
-            this.dateTo = dateTo;
-            this.dateFrom = dateFrom;
+    public Flight() {
+    }
+
+    public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom, Timestamp dateTo, Airplane airplane) {
+        this.flightID = flight_id;
+        this.departTo = departTo;
+        this.departFrom = departFrom;
+        this.code = code;
+        this.company = company;
+        this.dateTo = dateTo;
+        this.dateFrom = dateFrom;
+        this.airplane = airplane;
     }
 
     public int getFlightID() {
         return flightID;
     }
 
-    public void setFlightID(int flightid) {
-        this.flightID = flightid;
+    public void setFlightID(int flightId) {
+        this.flightID = flightId;
     }
 
     public String getDepartTo() {
@@ -91,16 +91,15 @@ public class Flight {
         return airplane;
     }
 
-    public String toString()
-    {
-            return "Flight{" + airplane.toString() +
-                    ", date to=" +  getDateTo() + ", " + '\'' +
-                    ", date from='" + getDateFrom() + '\'' +
-                    ", depart from='" + getDepartFrom() + '\'' +
-                    ", depart to='" + getDepartTo() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    ", company=" + getCompany() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    '}';
+    public String toString() {
+        return "Flight{" + airplane.toString() +
+                ", date to=" + getDateTo() + ", " + '\'' +
+                ", date from='" + getDateFrom() + '\'' +
+                ", depart from='" + getDepartFrom() + '\'' +
+                ", depart to='" + getDepartTo() + '\'' +
+                ", code=" + getCode() + '\'' +
+                ", company=" + getCompany() + '\'' +
+                ", code=" + getCode() + '\'' +
+                '}';
     }
 }
