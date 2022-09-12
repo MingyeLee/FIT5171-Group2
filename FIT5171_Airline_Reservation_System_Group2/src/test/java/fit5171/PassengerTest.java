@@ -131,6 +131,7 @@ public class PassengerTest {
     }
 
     @Test
+    @DisplayName("Test cvc contains 4 digits")
     void testInvalidCvcNumber() {
         int cvc = 1234;
         Throwable e = assertThrows(IllegalArgumentException.class, () -> {

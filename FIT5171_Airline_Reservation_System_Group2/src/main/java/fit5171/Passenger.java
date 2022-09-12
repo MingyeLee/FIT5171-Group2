@@ -2,29 +2,28 @@ package fit5171;
 
 import validation.PassengerValidator;
 
-public class Passenger extends Person
-{
+public class Passenger extends Person {
     private String email;
     private String phoneNumber;
     private String cardNumber;
     private int securityCode;
     private String passport;
 
-    public Passenger(){}
+    public Passenger() {
+    }
 
-    public Passenger(String firstName, String secondName, int age, String gender,String email, String phoneNumber, String passport, String cardNumber,int securityCode)
-    {
-        super(firstName,secondName,age,gender);
+    public Passenger(String firstName, String secondName, int age, String gender, String email, String phoneNumber, String passport, String cardNumber, int securityCode) {
+        super(firstName, secondName, age, gender);
         PassengerValidator.validateEmail(email);
         PassengerValidator.validatePhoneNumber(phoneNumber);
         PassengerValidator.validatePassportNumber(passport);
         PassengerValidator.validateCardNumber(cardNumber);
         PassengerValidator.validateCvcNumber(securityCode);
-        this.securityCode=securityCode;
-        this.cardNumber=cardNumber;
-        this.passport=passport;
-        this.email=email;
-        this.phoneNumber=phoneNumber;
+        this.securityCode = securityCode;
+        this.cardNumber = cardNumber;
+        this.passport = passport;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -36,36 +35,31 @@ public class Passenger extends Person
         this.email = email;
     }
 
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    public String getSecondName() {
-        return super.getSecondName();
-    }
-
-    public void setSecondName(String secondName) {
-        super.setSecondName(secondName);
-    }
-
-    public void setFirstName(String firstName) {
-        super.setFirstName(firstName);
-    }
-
     public String getPassport() {
         return passport;
     }
 
-    public void setGender(String gender) {
-        super.setGender(gender);
+    public void setPassport(String passport) {
+        PassengerValidator.validatePassportNumber(passport);
+        this.passport = passport;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        PassengerValidator.validatePhoneNumber(phoneNumber);
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getSecurityCode() {
         return securityCode;
+    }
+
+    public void setSecurityCode(int securityCode) {
+        PassengerValidator.validateCvcNumber(securityCode);
+        this.securityCode = securityCode;
     }
 
     public String getCardNumber() {
@@ -77,29 +71,24 @@ public class Passenger extends Person
         this.cardNumber = cardNumber;
     }
 
-    public void setSecurityCode(int securityCode) {
-        PassengerValidator.validateCvcNumber(securityCode);
-        this.securityCode = securityCode;
+    @Override
+    public String getFirstName() {
+        return super.getFirstName();
     }
 
     @Override
-    public void setAge(int age) {
-        super.setAge(age);
-    }
-
-    public void setPassport(String passport) {
-        PassengerValidator.validatePassportNumber(passport);
-        this.passport = passport;
+    public void setFirstName(String firstName) {
+        super.setFirstName(firstName);
     }
 
     @Override
-    public String getGender() {
-        return super.getGender();
+    public String getSecondName() {
+        return super.getSecondName();
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        PassengerValidator.validatePhoneNumber(phoneNumber);
-        this.phoneNumber = phoneNumber;
+    @Override
+    public void setSecondName(String secondName) {
+        super.setSecondName(secondName);
     }
 
     @Override
@@ -108,9 +97,23 @@ public class Passenger extends Person
     }
 
     @Override
-    public String toString()
-    {
-        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getSecondName()+
+    public void setAge(int age) {
+        super.setAge(age);
+    }
+
+    @Override
+    public String getGender() {
+        return super.getGender();
+    }
+
+    @Override
+    public void setGender(String gender) {
+        super.setGender(gender);
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" + " Fullname= " + super.getFirstName() + " " + super.getSecondName() +
                 " ,email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passport='" + passport +

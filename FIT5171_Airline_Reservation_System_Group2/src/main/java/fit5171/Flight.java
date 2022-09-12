@@ -11,7 +11,7 @@ public class Flight {
     private String company;
     private Timestamp dateFrom;
     private Timestamp dateTo;
-    Airplane airplane;
+    Airplane airplane; //need mock
 
     public Flight() {
     }
