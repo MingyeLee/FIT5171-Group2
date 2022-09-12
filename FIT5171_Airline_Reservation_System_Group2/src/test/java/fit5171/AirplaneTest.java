@@ -6,19 +6,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AirplaneTest {
     private Airplane airplane;
-
     @BeforeAll
-    static void initAll() {
+    static void initAll(){
         AirplaneTest airplaneTest = new AirplaneTest();
     }
 
     @BeforeEach
     void init() {
-        airplane = new Airplane(123, "AirBus A380", 50, 200, 10);
+        airplane = new Airplane(123,"AirBus A380",50,200,10);
     }
 
     @Test
-    void testValidAirplaneID() {
+    void testValidAirplaneID(){
         int id = 456;
         int exceptResult = 456;
         airplane.setAirplaneID(id);
@@ -26,12 +25,10 @@ public class AirplaneTest {
     }
 
     @Test
-    void testInvalidAirplaneID() {
+    void testInvalidAirplaneID(){
         int id = -10;
-        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            airplane.setAirplaneID(id);
-        });
-        assertEquals("Airplane ID should be positive number", exception.getMessage());
+        Throwable exception = assertThrows(IllegalArgumentException.class,()->{airplane.setAirplaneID(id);});
+        assertEquals("Airplane ID should be positive number",exception.getMessage());
     }
 
     @Test
