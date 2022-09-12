@@ -26,7 +26,7 @@ public class AirplaneTest {
 
     @Test
     void testInvalidAirplaneID(){
-        int id = 10;
+        int id = -10;
         Throwable exception = assertThrows(IllegalArgumentException.class,()->{airplane.setAirplaneID(id);});
         assertEquals("Airplane ID should be positive number",exception.getMessage());
     }
