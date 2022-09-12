@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 public class BuyTicket<T> {
-    Passenger passenger = new Passenger();
-    Ticket ticket = new Ticket();
-    Flight flight = new Flight();
+    Passenger passenger;
+    Ticket ticket;
+    Flight flight;
     Scanner in = new Scanner(System.in);
 
     public BuyTicket() {
@@ -20,12 +20,19 @@ public class BuyTicket<T> {
         flight = new Flight();
     }
 
-    public void showTicket() {
+    public BuyTicket(Passenger passenger, Flight flight, Ticket ticket) {
+        this.passenger = passenger;
+        this.ticket = ticket;
+        this.flight = flight;
+    }
+
+    public boolean showTicket() {
         try {
-            System.out.println("You have bought a ticket for flight " + ticket.flight.getDepartFrom() + " - " + ticket.flight.getDepartTo() + "\n\nDetails:");
+            System.out.println("You have bought a ticket for flight " + ticket.getFlight().getDepartFrom() + " - " + ticket.getFlight().getDepartTo() + "\n\nDetails:");
             System.out.println(this.ticket.toString());
+            return true;
         } catch (NullPointerException e) {
-            return;
+            return false;
         }
     }
 
