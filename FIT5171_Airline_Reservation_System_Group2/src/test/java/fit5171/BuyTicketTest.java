@@ -30,7 +30,7 @@ public class BuyTicketTest {
     public void testShowTicketWithValidTicket() {
 
         Timestamp dateFrom = new Timestamp(1662986289);
-        Timestamp dateTo = new Timestamp(1662986289);
+        Timestamp dateTo = new Timestamp(166298999);
         Airplane airplane = mock(Airplane.class);
         when(ticket.getFlight()).thenReturn(new Flight(1, "Sydney", "Melbourne", "xxx", "XXX", null, null, airplane));
         assertEquals(true, buyTicket.showTicket());
