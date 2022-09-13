@@ -7,7 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,21 +20,33 @@ public class BuyTicketTest {
 
     @BeforeAll
     public void setup() {
-        passenger = mock(Passenger.class);
-        flight = mock(Flight.class);
-        ticket = mock(Ticket.class);
-        buyTicket = new BuyTicket(passenger, flight, ticket);
+
     }
 
     @Test
     public void testShowTicketWithValidTicket() {
-
+        passenger = mock(Passenger.class);
+        flight = mock(Flight.class);
+        ticket = mock(Ticket.class);
+        buyTicket = new BuyTicket(passenger, flight, ticket);
         Timestamp dateFrom = new Timestamp(1662986289);
         Timestamp dateTo = new Timestamp(166298999);
         Airplane airplane = mock(Airplane.class);
-        when(ticket.getFlight()).thenReturn(new Flight(1, "Sydney", "Melbourne", "xxx", "XXX", null, null, airplane));
-        assertEquals(true, buyTicket.showTicket());
+        when(ticket.getFlight()).thenReturn(new Flight(1, "Sydney", "Melbourne", "xxx", "XXX", dateFrom, dateTo, airplane));
+        assertTrue(buyTicket.showTicket());
     }
 
-    
+    @Test
+    public void testShowTicketWithNullTicket() {
+        passenger = mock(Passenger.class);
+        flight = mock(Flight.class);
+        buyTicket = new BuyTicket(passenger, flight, null); //ticket is null
+        assertFalse(buyTicket.showTicket());
+    }
+
+    @Test
+    public void test() {
+
+    }
+
 }
