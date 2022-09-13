@@ -38,12 +38,14 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.mockito</groupId>-->
-        <!--            <artifactId>mockito-all</artifactId>-->
-        <!--            <version>1.10.19</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
+        <!-- mockito-core is the main artifact of Mockito. -->
+        <!-- Newer versions don't release mockito-all anymore. Henceforth, we should only use mockito-core.&ndash;&gt;-->
+        <!-- <dependency>-->
+        <!--    <groupId>org.mockito</groupId>-->
+        <!--    <artifactId>mockito-all</artifactId>-->
+        <!--    <version>1.10.19</version>-->
+        <!--    <scope>test</scope>-->
+        <!-- </dependency>-->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>

@@ -3,7 +3,7 @@ package fit5171;
 import java.util.ArrayList;
 
 public class FlightCollection {
-	
+
 	public static ArrayList<Flight> flights;
 
 	public static ArrayList<Flight> getFlights() {
@@ -15,22 +15,21 @@ public class FlightCollection {
 		//	in the order that they are returned by the specified collection's Iterator.
 		FlightCollection.flights.addAll(flights);
 	}
-	
+
 	public static Flight getFlightInfo(String city1, String city2) {
-    	//display the flights where there is a direct flight from city 1 to city2
-    	return null;
-    }
-    
-    public static Flight getFlightInfo(String city) {
-    	//SELECT a flight where depart_to = city
-    	return null;
+		//display the flights where there is a direct flight from city 1 to city2
+		return null;
+	}
 
-    }
-    public static Flight getFlightInfo(int flight_id) {
-    	//SELECT a flight with a particular flight id
-    	return null;
+	public static Flight getFlightInfo(String city) {
+		//SELECT a flight where depart_to = city
+		return null;
+	}
 
-    }
-    
+	public static Flight getFlightInfo(int flight_id) {
+		//SELECT a flight with a particular flight id
+		return null;
+	}
+
 
 }
