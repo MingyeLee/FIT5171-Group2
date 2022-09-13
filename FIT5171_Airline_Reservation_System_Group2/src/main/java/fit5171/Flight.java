@@ -1,7 +1,7 @@
 package fit5171;
 
 import validation.AirplaneValidator;
-//import validation.FlightValidator;
+import validation.FlightValidator;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -20,14 +20,14 @@ public class Flight {
     }
 
     public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom, Timestamp dateTo, Airplane airplane) {
-//        FlightValidator.validateFlightId(flight_id);
-//        FlightValidator.validateDepartTo(departTo);
-//        FlightValidator.validateDepartFrom(departFrom);
-//        FlightValidator.validateCode(code);
-//        FlightValidator.validateCompany(company);
-//        FlightValidator.validateDateFrom(dateFrom);
-//        FlightValidator.validateDateTo(dateTo);
-//        FlightValidator.validateAirplane(airplane);
+        FlightValidator.validateFlightId(flight_id);
+        FlightValidator.validateDepartTo(departTo);
+        FlightValidator.validateDepartFrom(departFrom);
+        FlightValidator.validateCode(code);
+        FlightValidator.validateCompany(company);
+        FlightValidator.validateDateFrom(dateFrom);
+        FlightValidator.validateDateTo(dateTo, dateFrom);
+        FlightValidator.validateAirplane(airplane);
         this.flightID = flight_id;
         this.departTo = departTo;
         this.departFrom = departFrom;
@@ -97,12 +97,12 @@ public class Flight {
     }
 
     public void setDateTo(Timestamp dateTo) {
-        FlightValidator.validateDateTo(dateTo);
+        FlightValidator.validateDateTo(dateTo, dateFrom);
         this.dateTo = dateTo;
     }
 
     public void setAirplane(Airplane airplane) {
-        FlightValidator.validateAirplane(airplane);
+//        FlightValidator.validateAirplane(airplane);
         this.airplane = airplane;
     }
 

@@ -1,14 +1,20 @@
 package fit5171;
 
+import validation.TicketValidator;
+
+import static validation.TicketValidator.*;
+
 public class Ticket {
     private int ticket_id;
     private int price;
     private Flight flight;
-    private boolean classVip; //indicates if this is bussiness class ticket or not
+    private boolean classVip; //indicates if this is business class ticket or not
     private boolean status; //indicates status of ticket: if it is bought by someone or not
     private Passenger passenger;
 
     public Ticket(int ticket_id, int price, Flight flight, boolean classVip, Passenger passenger) {
+        validateStatus(status);
+        validTicketPrice(price);
         this.ticket_id = ticket_id;
         this.price = price;
         this.flight = flight;
