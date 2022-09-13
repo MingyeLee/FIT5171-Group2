@@ -35,4 +35,6 @@ public class BuyTicketTest {
         when(ticket.getFlight()).thenReturn(new Flight(1, "Sydney", "Melbourne", "xxx", "XXX", null, null, airplane));
         assertEquals(true, buyTicket.showTicket());
     }
+
+    
 }

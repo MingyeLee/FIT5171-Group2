@@ -7,4 +7,9 @@ import static org.mockito.Mockito.*;
 
 public class ChooseTicketTest {
 
+    @DisplayName("Choose ticket integration test")
+    @Test
+    public void setup() {
+//        System.setIn();
+    }
 }

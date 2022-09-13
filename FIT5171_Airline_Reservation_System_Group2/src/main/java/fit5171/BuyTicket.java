@@ -47,8 +47,11 @@ public class BuyTicket<T> {
         Ticket validTicket = TicketCollection.getTicketInfo(ticket_id);
 
         //if there is a valid ticket id was input then we buy it, otherwise show message
-        if (validTicket != null) {
+        if (validTicket == null) {
             System.out.println("This ticket does not exist.");
+            return;
+        } else if (validTicket.ticketStatus()) {
+            System.out.println("Sorry, ticket has been booked.");
             return;
         } else {
             //select flight_id from ticket where ticket_id=" + ticket_id
@@ -223,6 +226,12 @@ public class BuyTicket<T> {
         //if there is a valid ticket id was input then we buy it, otherwise show message
         if (validTicketFirst != null || validTicketSecond != null) {
             System.out.println("This ticket does not exist.");
+            return;
+        } else if (validTicketFirst.ticketStatus()) {
+            System.out.println("Sorry,ticket 1 has been booked.");
+            return;
+        } else if (validTicketSecond.ticketStatus()) {
+            System.out.println("Sorry, ticket 2 has been booked.");
             return;
         } else {
             flight_id_first = validTicketFirst.getFlight().getFlightID();
