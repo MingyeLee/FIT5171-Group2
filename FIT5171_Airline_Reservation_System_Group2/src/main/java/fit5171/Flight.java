@@ -43,6 +43,7 @@ public class Flight {
     }
 
     public void setFlightID(int flightId) {
+        FlightValidator.validateFlightId(flightId);
         this.flightID = flightId;
     }
 
@@ -51,6 +52,7 @@ public class Flight {
     }
 
     public void setDepartTo(String departTo) {
+        FlightValidator.validateDepartTo(departTo);
         this.departTo = departTo;
     }
 
@@ -59,6 +61,7 @@ public class Flight {
     }
 
     public void setDepartFrom(String departFrom) {
+        FlightValidator.validateDepartFrom(departFrom);
         this.departFrom = departFrom;
     }
 
@@ -67,6 +70,7 @@ public class Flight {
     }
 
     public void setCode(String code) {
+        FlightValidator.validateCode(code);
         this.code = code;
     }
 
@@ -75,6 +79,7 @@ public class Flight {
     }
 
     public void setCompany(String company) {
+        FlightValidator.validateCompany(company);
         this.company = company;
     }
 
@@ -83,6 +88,7 @@ public class Flight {
     }
 
     public void setDateFrom(Timestamp dateFrom) {
+        FlightValidator.validateDateFrom(dateFrom);
         this.dateFrom = dateFrom;
     }
 
@@ -91,10 +97,12 @@ public class Flight {
     }
 
     public void setDateTo(Timestamp dateTo) {
+        FlightValidator.validateDateTo(dateTo);
         this.dateTo = dateTo;
     }
 
     public void setAirplane(Airplane airplane) {
+        FlightValidator.validateAirplane(airplane);
         this.airplane = airplane;
     }
 
