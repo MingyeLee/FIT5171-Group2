@@ -21,6 +21,7 @@ public class FlightValidator {
         if (departFrom==null){
             throw new IllegalArgumentException("the Depart from place cannot be empty");
         }
+
     }
 
     public static void validateCode(String code){
@@ -36,23 +37,21 @@ public class FlightValidator {
     }
 
     public static void validateDateFrom(Timestamp dateFrom){
-        int totalSitsNumber = dateFrom;
-        if(totalSitsNumber>300){
-            throw new IllegalArgumentException("Total sits number cannot exceed 300");
-        }
+        Timestamp totalSitsNumber = dateFrom;
+//        if( totalSitsNumber  == ""){
+//            throw new IllegalArgumentException("Total sits number cannot exceed 300");
+//        }
     }
 
     public static void validateDateTo(Timestamp dateTo){
-        int totalSitsNumber = dateTo;
-        if(totalSitsNumber>300){
-            throw new IllegalArgumentException("Total sits number cannot exceed 300");
-        }
+//        Timestamp totalSitsNumber = dateTo;
+//        }
     }
 
     public static void validateAirplane(Airplane airplane){
-        int totalSitsNumber = airplane;
-        if(totalSitsNumber>300){
-            throw new IllegalArgumentException("Total sits number cannot exceed 300");
-        }
+//        int totalSitsNumber = airplane;
+//        if(totalSitsNumber>300){
+//            throw new IllegalArgumentException("Total sits number cannot exceed 300");
+//        }
     }
 }
