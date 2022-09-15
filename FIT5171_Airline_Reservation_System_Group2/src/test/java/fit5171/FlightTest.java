@@ -8,17 +8,19 @@ import static org.mockito.Mockito.*;
 public class FlightTest {
     private Airplane airplane;
     private Flight flight;
+
     @BeforeAll
-    static void initAll(){
+    static void initAll() {
         FlightTest flightTest = new FlightTest();
     }
+
     @BeforeEach
     void init() {
-        flight = new Flight(123,"Beijing","Shanghai","abc","Pingguo", 10:20,200, airplane);
+        flight = new Flight(123, "Beijing", "Shanghai", "abc", "Pingguo", null, null, airplane);
     }
 
     @Test
-    void testValidFlightID(){
+    void testValidFlightID() {
         int id = 123;
         int exceptResult = 123;
         flight.setFlightID(id);
@@ -26,10 +28,12 @@ public class FlightTest {
     }
 
     @Test
-    void testInvalidFlightID(){
+    void testInvalidFlightID() {
         int id = -10;
-        Throwable exception = assertThrows(IllegalArgumentException.class,()->{flight.setFlightID(id);});
-        assertEquals("Flight ID should be positive number",exception.getMessage());
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            flight.setFlightID(id);
+        });
+        assertEquals("Flight ID should be positive number", exception.getMessage());
     }
 
     @Test

@@ -58,106 +58,68 @@ public class BuyTicket<T> {
             flight_id = validTicket.getFlight().getFlightID();
             try {
                 //FirstName
-                while (true) {
-                    try {
-                        System.out.println("Enter your First Name: ");
-                        String firstName = in.nextLine();
-                        PersonValidator.validateName(firstName);
-                        passenger.setFirstName(firstName);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your First Name: ");
+                String firstName = in.nextLine();
+                PersonValidator.validateName(firstName);
+                passenger.setFirstName(firstName);
+
 
                 //SecondName
-                while (true) {
-                    try {
-                        System.out.println("Enter your Second name:");
-                        String secondName = in.nextLine();
-                        PersonValidator.validateName(secondName);
-                        passenger.setSecondName(secondName); //setting passengers info
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your Second name:");
+                String secondName = in.nextLine();
+                PersonValidator.validateName(secondName);
+                passenger.setSecondName(secondName); //setting passengers info
+
 
                 //Age
-                while (true) {
-                    try {
-                        System.out.println("Enter your age:");
-                        Integer age = in.nextInt();
-                        in.nextLine();
-                        PersonValidator.validateAge(age);
-                        passenger.setAge(age);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your age:");
+                Integer age = in.nextInt();
+                in.nextLine();
+                PersonValidator.validateAge(age);
+                passenger.setAge(age);
+
 
                 //Gender
-                while (true) {
-                    try {
-                        System.out.println("Enter your gender: ");
-                        String gender = in.nextLine();
-                        PersonValidator.validateGender(gender);
-                        passenger.setGender(gender);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your gender: ");
+                String gender = in.nextLine();
+                PersonValidator.validateGender(gender);
+                passenger.setGender(gender);
+
 
                 //Email
-                while (true) {
-                    try {
-                        System.out.println("Enter your e-mail address");
-                        String email = in.nextLine();
-                        PassengerValidator.validateEmail(email);
-                        passenger.setEmail(email);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your e-mail address");
+                String email = in.nextLine();
+                PassengerValidator.validateEmail(email);
+                passenger.setEmail(email);
+
 
                 //Phone Number
-                while (true) {
-                    try {
-                        System.out.println("Enter your phone number (start with 04/05/61):");
-                        String phoneNumber = in.nextLine();
-                        PassengerValidator.validatePhoneNumber(phoneNumber);
-                        passenger.setPhoneNumber(phoneNumber);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your phone number (start with 04/05/61):");
+                String phoneNumber = in.nextLine();
+                PassengerValidator.validatePhoneNumber(phoneNumber);
+                passenger.setPhoneNumber(phoneNumber);
+
 
                 //Passport
-                while (true) {
-                    try {
-                        System.out.println("Enter your passport number:");
-                        String passportNumber = in.nextLine();
-                        PassengerValidator.validatePassportNumber(passportNumber);
-                        passenger.setPassport(passportNumber);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your passport number:");
+                String passportNumber = in.nextLine();
+                PassengerValidator.validatePassportNumber(passportNumber);
+                passenger.setPassport(passportNumber);
+
 
                 //Purchase or not
                 int purch;
-                while (true) {
-                    System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                    purch = in.nextInt();
-                    in.nextLine();
-                    if (purch == 1 || purch == 0)
-                        break;
-                }
+
+                System.out.println("Do you want to purchase?\n 1-YES 0-NO");
+                purch = in.nextInt();
+                in.nextLine();
 
 
                 if (purch == 0) { //Not purchase
@@ -188,30 +150,19 @@ public class BuyTicket<T> {
                 }
                 System.out.println("Your bill: " + ticket.getPrice() + "\n");
                 //Card number
-                while (true) {
-                    try {
-                        System.out.println("Enter your card number:");
-                        String cardNumber = in.nextLine();
-                        PassengerValidator.validateCardNumber(cardNumber);
-                        passenger.setCardNumber(cardNumber);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your card number:");
+                String cardNumber = in.nextLine();
+                PassengerValidator.validateCardNumber(cardNumber);
+                passenger.setCardNumber(cardNumber);
+
 
                 //Cvc code
-                while (true) {
-                    try {
-                        System.out.println("Enter your security code:");
-                        Integer securityCode = in.nextInt();
-                        PassengerValidator.validateCvcNumber(securityCode);
-                        passenger.setSecurityCode(securityCode);
-                        break;
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
+
+                System.out.println("Enter your security code:");
+                Integer securityCode = in.nextInt();
+                PassengerValidator.validateCvcNumber(securityCode);
+                passenger.setSecurityCode(securityCode);
 
 
             } catch (PatternSyntaxException patternException) {

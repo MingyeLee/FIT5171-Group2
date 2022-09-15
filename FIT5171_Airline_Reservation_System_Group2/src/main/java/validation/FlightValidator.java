@@ -37,6 +37,8 @@ public class FlightValidator {
     }
 
     public static void validateDateFrom(Timestamp dateFrom) {
+        if (dateFrom == null)
+            throw new IllegalArgumentException("Date from cannot be null");
         if (dateFrom.before(new Timestamp(System.currentTimeMillis()))) {
             throw new IllegalArgumentException("Date from cannot before current time");
         }
