@@ -66,6 +66,7 @@ public class BuyTicket<T> {
                         passenger.setFirstName(firstName);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -78,6 +79,7 @@ public class BuyTicket<T> {
                         passenger.setSecondName(secondName); //setting passengers info
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -91,6 +93,7 @@ public class BuyTicket<T> {
                         passenger.setAge(age);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -103,6 +106,7 @@ public class BuyTicket<T> {
                         passenger.setGender(gender);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -115,6 +119,7 @@ public class BuyTicket<T> {
                         passenger.setEmail(email);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -127,6 +132,7 @@ public class BuyTicket<T> {
                         passenger.setPhoneNumber(phoneNumber);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -139,6 +145,7 @@ public class BuyTicket<T> {
                         passenger.setPassport(passportNumber);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -189,6 +196,7 @@ public class BuyTicket<T> {
                         passenger.setCardNumber(cardNumber);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 
@@ -201,6 +209,7 @@ public class BuyTicket<T> {
                         passenger.setSecurityCode(securityCode);
                         break;
                     } catch (IllegalArgumentException e) {
+                        System.out.println(e.getMessage());
                     }
                 }
 

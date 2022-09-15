@@ -1,5 +1,6 @@
 package fit5171;
 
+import validation.PersonValidator;
 import validation.TicketValidator;
 
 import static validation.TicketValidator.*;
@@ -13,8 +14,7 @@ public class Ticket {
     private Passenger passenger;
 
     public Ticket(int ticket_id, int price, Flight flight, boolean classVip, Passenger passenger) {
-        validateStatus(status);
-        validTicketPrice(price);
+        validateTicketPrice(price);
         this.ticket_id = ticket_id;
         this.price = price;
         this.flight = flight;
@@ -46,6 +46,7 @@ public class Ticket {
     }
 
     public void saleByAge(int age) {
+        PersonValidator.validateAge(age);
         int price = getPrice();
         if (age < 15) {
             price -= (int) price * 0.5;//50% sale for children under 15
@@ -61,6 +62,7 @@ public class Ticket {
     }
 
     public void setFlight(Flight flight) {
+        TicketValidator.validateTicketFlight(flight);
         this.flight = flight;
     }
 
@@ -89,6 +91,7 @@ public class Ticket {
     }
 
     public void setPassenger(Passenger passenger) {
+        TicketValidator.validateTicketPassenger(passenger);
         this.passenger = passenger;
     }
 

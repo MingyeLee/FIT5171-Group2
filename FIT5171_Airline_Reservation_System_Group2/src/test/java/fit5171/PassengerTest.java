@@ -20,6 +20,37 @@ public class PassengerTest {
     }
 
     @Test
+    void testCreateValidFemalePassenger() {
+        assertNotNull(new Passenger("Jane", "Doe", 22, "Female", "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908));
+    }
+
+    @Test
+    void testCreateValidMalePassenger() {
+        assertNotNull(new Passenger("John", "Doe", 22, "Male", "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908));
+    }
+
+    @Test
+    void testCreateValidOtherGenderPassenger() {
+        assertNotNull(new Passenger("Jane", "Doe", 22, "Other", "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908));
+    }
+
+    @Test
+    void testCreatePassengerWithInvalidGender() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Passenger("Jane", "Doe", 22, "xxx", "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908);
+        });
+        assertEquals("Gender can only be Male Female or Other", e.getMessage());
+    }
+
+    @Test
+    void testCreateValidNullGenderPassenger() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Passenger("Jane", "Doe", 22, null, "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908);
+        });
+        assertEquals("Gender can only be Male Female or Other", e.getMessage());
+    }
+
+    @Test
     void testNullFirstNameInConstructor() {
 
         Throwable e = assertThrows(IllegalArgumentException.class, () -> {
@@ -29,7 +60,7 @@ public class PassengerTest {
     }
 
     @Test
-    void testNulSecondNameInConstructor() {
+    void testNullSecondNameInConstructor() {
         Throwable e = assertThrows(IllegalArgumentException.class, () -> {
             passenger = new Passenger("Jane", null, 22, "Female", "abc@admain.com", "0488256354", "AB8976754", "5674635271624728", 908);
         });
@@ -54,7 +85,48 @@ public class PassengerTest {
 
 
     @Test
-    void testValidPhoneNumber() {
+    void testNullEmailInConstructor() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger = new Passenger("Jane", "Doe", 30, "Male", null, "0488256354", "AB8976754", "5674635271624728", 908);
+        });
+        assertEquals("Email address cannot be empty", e.getMessage());
+    }
+
+    @Test
+    void testNullPhoneNumberInConstructor() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger = new Passenger("Jane", "Doe", 30, "Male", "abd@domain.com", null, "AB8976754", "5674635271624728", 908);
+        });
+        assertEquals("Phone number cannot be empty", e.getMessage());
+    }
+
+    @Test
+    void testNullCardNumberInConstructor() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger = new Passenger("Jane", "Doe", 30, "Male", "abd@domain.com", "0488256354", "AB8976754", null, 908);
+        });
+        assertEquals("Card number cannot be empty", e.getMessage());
+    }
+
+    @Test
+    void testNullPassportNumberInConstructor() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger = new Passenger("Jane", "Doe", 30, "Male", "abd@domain.com", "0488256354", null, "5674635271624728", 908);
+        });
+        assertEquals("Passport number cannot be empty", e.getMessage());
+    }
+
+    @Test
+    void testInvalidSecurityCodeInConstructor() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger = new Passenger("Jane", "Doe", 30, "Male", "abd@domain.com", "0488256354", "AB8976754", "5674635271624728", 90008);
+        });
+        assertEquals("Invalid cvc number:Cvc number should be 3 digits", e.getMessage());
+    }
+
+
+    @Test
+    void testSetValidPhoneNumberStartsWith05() {
         String phone = "0512345678";
         String expectedResult = "0512345678";
         passenger.setPhoneNumber(phone);
@@ -62,12 +134,37 @@ public class PassengerTest {
     }
 
     @Test
-    void testPhoneNumberContainsLetter() {
+    void testSetValidPhoneNumberStartsWith04() {
+        String phone = "0412345678";
+        String expectedResult = "0412345678";
+        passenger.setPhoneNumber(phone);
+        assertEquals(expectedResult, passenger.getPhoneNumber());
+    }
+
+    @Test
+    void testSetValidPhoneNumberStartsWith61() {
+        String phone = "6112345678";
+        String expectedResult = "6112345678";
+        passenger.setPhoneNumber(phone);
+        assertEquals(expectedResult, passenger.getPhoneNumber());
+    }
+
+    @Test
+    void testSetPhoneNumberLengthExceed9() {
+        String phone = "6112345678000";
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            passenger.setPhoneNumber(phone);
+        });
+        assertEquals("Invalid phone number:phone number should starts with 04/05/61 with length 9", e.getMessage());
+    }
+
+    @Test
+    void testSetPhoneNumberContainsLetter() {
         String phone = "qwe1213ec";
         Throwable e = assertThrows(IllegalArgumentException.class, () -> {
             passenger.setPhoneNumber(phone);
         });
-        assertEquals("Invalid phone number", e.getMessage());
+        assertEquals("Invalid phone number:phone number should starts with 04/05/61 with length 9", e.getMessage());
     }
 
     @Test
@@ -79,7 +176,6 @@ public class PassengerTest {
     }
 
     @Test
-        // Assumption username and domain can only be letters and must end with .com
     void testInvalidEmail() {
         String email = "xyz@abcdecom";
         Throwable e = assertThrows(IllegalArgumentException.class, () -> {

@@ -2,18 +2,28 @@ package fit5171;
 
 import org.junit.jupiter.api.*;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class TicketTest {
-    private Ticket ticket;
-    private Flight mockFlight;
-    private Passenger mockPassenger;
+    Ticket ticket;
+    static Flight mockFlight;
+    static FlightCollection mockFlightCollection;
+    static Passenger mockPassenger;
 
-    @BeforeEach
-    void initAll() {
+    @BeforeAll
+    static void initAll() {
         mockFlight = mock(Flight.class);
         mockPassenger = mock(Passenger.class);
+        mockFlightCollection = mock(FlightCollection.class);
+        mockStatic(FlightCollection.class);
+    }
+
+    @BeforeEach
+    void init() {
         ticket = new Ticket(2345, 123, mockFlight, false, mockPassenger);
     }
 
@@ -37,22 +47,27 @@ public class TicketTest {
     void testTicketPriceForUnder15() {
         when(mockPassenger.getAge()).thenReturn(10);
         ticket.setPrice(1000);
-
-        assertEquals(500 * 1.12, ticket.getPrice());
+        ticket.setTicketStatus(true);
+        assertEquals(1000 * 0.5 * 1.12, ticket.getPrice());
+        assertTrue(ticket.ticketStatus());
     }
 
     @Test
     void testTicketPriceForOver60() {
         when(mockPassenger.getAge()).thenReturn(70);
         ticket.setPrice(1000);
+        ticket.setTicketStatus(true);
         assertEquals(0, ticket.getPrice());
+        assertTrue(ticket.ticketStatus());
     }
 
     @Test
     void testTicketPriceForBetween15And60() {
         when(mockPassenger.getAge()).thenReturn(50);
         ticket.setPrice(1000);
+        ticket.setTicketStatus(true);
         assertEquals(1000 * 1.12, ticket.getPrice());
+        assertTrue(ticket.ticketStatus());
     }
 
     @Test
@@ -63,5 +78,20 @@ public class TicketTest {
         assertEquals("Ticket price must be non-negative number", e.getMessage());
     }
 
+    @Test
+    void testSetNullFlight() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            ticket.setFlight(null);
+        });
+        assertEquals("Ticket flight cannot be null", e.getMessage());
+    }
 
+
+    @Test
+    void testSetNullPassenger() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            ticket.setPassenger(null);
+        });
+        assertEquals("Ticket passenger cannot be null", e.getMessage());
+    }
 }

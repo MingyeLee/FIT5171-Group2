@@ -6,18 +6,64 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AirplaneTest {
     private Airplane airplane;
+
     @BeforeAll
-    static void initAll(){
+    static void initAll() {
         AirplaneTest airplaneTest = new AirplaneTest();
     }
 
     @BeforeEach
     void init() {
-        airplane = new Airplane(123,"AirBus A380",50,200,10);
+        airplane = new Airplane(123, "AirBus A380", 50, 200, 10);
     }
 
     @Test
-    void testValidAirplaneID(){
+    void testCreateAirplaneWithValidID() {
+        assertNotNull(new Airplane(123, "AirBus A380", 50, 200, 10));
+    }
+
+    @Test
+    void testCreateAirplaneWithInvalidID() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Airplane(-123, "AirBus A380", 50, 200, 10);
+        });
+        assertEquals("Airplane ID should be positive number", e.getMessage());
+    }
+
+    @Test
+    void testCreateAirplaneWithInvalidBusinessSitsNumber() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Airplane(123, "AirBus A380", -50, 200, 10);
+        });
+        assertEquals("businessSitsNumber should be within 1-300", e.getMessage());
+    }
+
+    @Test
+    void testCreateAirplaneWithInvalidEconomySitsNumber() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Airplane(123, "AirBus A380", 50, -200, 10);
+        });
+        assertEquals("economySitsNumber should be within 1-300", e.getMessage());
+    }
+
+    @Test
+    void testCreateAirplaneWithInvalidCrewSitsNumber() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Airplane(123, "AirBus A380", 50, 200, -10);
+        });
+        assertEquals("crewSitsNumber should be within 1-300", e.getMessage());
+    }
+
+    @Test
+    void testCreateAirplaneWithTotalSitsNumberExceed300() {
+        Throwable e = assertThrows(IllegalArgumentException.class, () -> {
+            new Airplane(123, "AirBus A380", 50, 250, 10);
+        });
+        assertEquals("Total sits number cannot exceed 300", e.getMessage());
+    }
+
+    @Test
+    void testSetValidAirplaneID() {
         int id = 456;
         int exceptResult = 456;
         airplane.setAirplaneID(id);
@@ -25,10 +71,12 @@ public class AirplaneTest {
     }
 
     @Test
-    void testInvalidAirplaneID(){
+    void testSetInvalidAirplaneID() {
         int id = -10;
-        Throwable exception = assertThrows(IllegalArgumentException.class,()->{airplane.setAirplaneID(id);});
-        assertEquals("Airplane ID should be positive number",exception.getMessage());
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            airplane.setAirplaneID(id);
+        });
+        assertEquals("Airplane ID should be positive number", exception.getMessage());
     }
 
     @Test

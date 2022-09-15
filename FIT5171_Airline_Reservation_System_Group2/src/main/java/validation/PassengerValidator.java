@@ -5,7 +5,7 @@ public class PassengerValidator {
     public static void validatePhoneNumber(String phoneNumber) {
         try {
             if (!phoneNumber.matches("04\\d{8}|05\\d{8}|61\\d{8}"))
-                throw new IllegalArgumentException("Invalid phone number");
+                throw new IllegalArgumentException("Invalid phone number:phone number should starts with 04/05/61 with length 9");
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Phone number cannot be empty");
         }
@@ -39,11 +39,9 @@ public class PassengerValidator {
     }
 
     public static void validateCvcNumber(int cvcNumber) {
-        try {
-            if (cvcNumber < 100 || cvcNumber > 999)
-                throw new IllegalArgumentException("Invalid cvc number:Cvc number should be 3 digits");
-        } catch (NullPointerException e) {
-            throw new IllegalArgumentException("Cvc number cannot be empty");
+
+        if (cvcNumber < 100 || cvcNumber > 999) {
+            throw new IllegalArgumentException("Invalid cvc number:Cvc number should be 3 digits");
         }
     }
 }
