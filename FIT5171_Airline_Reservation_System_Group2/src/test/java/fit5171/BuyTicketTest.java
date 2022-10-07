@@ -20,16 +20,16 @@ public class BuyTicketTest {
     Passenger passenger;
     Flight flight;
     Ticket ticket;
-//    MockedStatic<TicketCollection> mockTicketCollection;
-//    MockedStatic<FlightCollection> mockFlightCollection;
+    MockedStatic<TicketCollection> mockTicketCollection;
+    MockedStatic<FlightCollection> mockFlightCollection;
 
     @BeforeAll
     public void setup() {
         passenger = mock(Passenger.class);
         flight = mock(Flight.class);
         ticket = mock(Ticket.class);
-//        mockTicketCollection = mockStatic(TicketCollection.class, CALLS_REAL_METHODS);
-//        mockFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
+        mockTicketCollection = mockStatic(TicketCollection.class, CALLS_REAL_METHODS);
+        mockFlightCollection = mockStatic(FlightCollection.class, CALLS_REAL_METHODS);
     }
 
     @Test
@@ -91,12 +91,16 @@ public class BuyTicketTest {
         Airplane airplane = mock(Airplane.class);
         when(airplane.getAirplaneID()).thenReturn(1);
         flight = new Flight(1, "Sydney", "Melbourne", "xxx", "XXX", dateFrom, dateTo, airplane);
-
+        FlightCollection.flights = new ArrayList<>();
+        FlightCollection.flights.add(flight);
         when(ticket.getFlight()).thenReturn(flight);
         TicketCollection.tickets = new ArrayList<>();
         TicketCollection.tickets.add(new Ticket(1, 1000, flight, false, passenger));
         String input = String.format("John\nDoe\n10\nmale\nabc@domain.com\n0455787585\nea6574899\n1\n1234321234321234\n888");
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        when(passenger.getAge()).thenReturn(10);
+        when(flight.getAirplane().getAirplaneID()).thenReturn(1);
+        when(airplane.getEconomySitsNumber()).thenReturn(200);
         buyTicket = new BuyTicket(passenger, flight, ticket);
         try {
             buyTicket.buyTicket(1);

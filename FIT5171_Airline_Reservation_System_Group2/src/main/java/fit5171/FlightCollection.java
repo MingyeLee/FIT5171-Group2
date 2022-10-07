@@ -36,7 +36,7 @@ public class FlightCollection {
 
     public static Flight getFlightInfo(int flight_id) {
         //SELECT a flight with a particular flight id
-        return null;
+        return flights.get(flight_id - 1);
     }
 
 
