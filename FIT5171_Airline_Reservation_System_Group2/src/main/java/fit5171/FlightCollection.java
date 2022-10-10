@@ -12,7 +12,7 @@ public class FlightCollection {
         return flights;
     }
 
-    public static void addFlights(ArrayList<Flight> flights) {
+    public static void addFlights(ArrayList<Flight> flights){
         if (flights == null || flights.contains(null)) {
             throw new IllegalArgumentException("Flight collection cannot be null or contain null value");
         }
